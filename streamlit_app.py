@@ -5,7 +5,7 @@ import streamlit as st
 st.title("Banking Chatbot")
 
 # Define a text input for user messages
-user_input = st.text_input("")
+# user_input = st.text_input("")
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():

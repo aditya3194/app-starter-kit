@@ -34,18 +34,32 @@ responses = {
 }
 
 
+if st.session_state.messages[-1]["role"] != "assistant":
+    user_input = prompt.lower()
+    if user_input in responses:
+        st.text("Assistant:")
+        st.write(responses[user_input])
+    else:
+        st.text("Assistant:")
+        st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
 
+    # with st.chat_message("assistant"):
+    #     with st.spinner("Thinking..."):
+    #         response = generate_response(load+prompt) 
+    #         st.write(response) 
+    message = {"role": "assistant", "content": responses[user_input]}
+    st.session_state.messages.append(message)
 
 
 # Handle user input and display responses
-if st.button("Send"):
-    user_input = user_input.lower()
-    if user_input in responses:
-        st.text("Chatbot:")
-        st.write(responses[user_input])
-    else:
-        st.text("Chatbot:")
-        st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
+# if st.button("Send"):
+#     user_input = user_input.lower()
+#     if user_input in responses:
+#         st.text("Chatbot:")
+#         st.write(responses[user_input])
+#     else:
+#         st.text("Chatbot:")
+#         st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
 
 # Instructions for the user
 st.sidebar.header("Instructions")

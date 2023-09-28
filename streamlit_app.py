@@ -37,8 +37,9 @@ if prompt := st.chat_input():
 
 
 
-if st.session_state.messages[-1]["role"] != "assistant":
+if st.session_state.messages[-1]["role"] == "assistant":
     with st.spinner("Thinking..."):
+
         user_input = prompt.lower()
         message = []
         if user_input in responses:

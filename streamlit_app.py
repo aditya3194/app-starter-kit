@@ -1,5 +1,16 @@
 import streamlit as st
 
+
+
+# Store LLM generated responses
+if "messages" not in st.session_state.keys():
+    st.session_state.messages = [{"role": "assistant", "content": "नमस्ते! कैसे मदद कर सकताहूँ?"}]
+
+# Display chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.write(message["content"])
+
 # Define a dictionary of user inputs and corresponding responses (rule-based)
 responses = {
     "balance": "Your account balance is $5,000.",

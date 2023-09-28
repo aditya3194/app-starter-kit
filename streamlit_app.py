@@ -38,16 +38,17 @@ if prompt := st.chat_input():
 
 
 if st.session_state.messages[-1]["role"] != "assistant":
-    user_input = prompt.lower()
-    message = []
-    if user_input in responses:
-        st.chat_message("assistant:")
-        st.write(responses[user_input])
-        message = {"role": "assistant", "content": responses[user_input]}
-    else:
-        st.chat_message("assistant:")
-        st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
-        message = {"role": "assistant", "content": "No Information about it"}
+    with st.spinner("Thinking..."):
+        user_input = prompt.lower()
+        message = []
+        if user_input in responses:
+            st.chat_message("assistant:")
+            st.write(responses[user_input])
+            message = {"role": "assistant", "content": responses[user_input]}
+        else:
+            st.chat_message("assistant:")
+            st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
+            message = {"role": "assistant", "content": "No Information about it"}
 
     # with st.chat_message("assistant"):
     #     with st.spinner("Thinking..."):

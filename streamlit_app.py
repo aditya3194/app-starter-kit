@@ -1,6 +1,11 @@
 import streamlit as st
 
 
+# Create a Streamlit app
+st.title("Banking Chatbot")
+
+# Define a text input for user messages
+user_input = st.text_input("")
 
 # Store LLM generated responses
 if "messages" not in st.session_state.keys():
@@ -11,6 +16,14 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.write(message["content"])
 
+
+# User-provided prompt
+if prompt := st.chat_input():
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.chat_message("user"):
+        st.write(prompt)
+
+
 # Define a dictionary of user inputs and corresponding responses (rule-based)
 responses = {
     "balance": "Your account balance is $5,000.",
@@ -20,11 +33,9 @@ responses = {
     "help": "I'm here to provide information about your account and our services. How can I assist you today?",
 }
 
-# Create a Streamlit app
-st.title("Banking Chatbot")
 
-# Define a text input for user messages
-user_input = st.text_input("You:", "")
+
+
 
 # Handle user input and display responses
 if st.button("Send"):

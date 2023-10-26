@@ -5,4 +5,3 @@ IPython
 pandas
 unstructured
 cohere
-os

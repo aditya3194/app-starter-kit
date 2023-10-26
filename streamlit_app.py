@@ -25,7 +25,7 @@ api_key = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
 os.environ['COHERE_API_KEY'] = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
 co = cohere.Client(api_key) 
   
-st.title("STC Chatbot")
+st.title("Knowledge Management")
 
 
 # load databases locally
@@ -123,7 +123,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
 #         st.write("I'm sorry, I don't have the information you requested. Please try asking something else.")
 
 # Instructions for the user
-st.sidebar.header("Instructions")
+st.sidebar.header("STC")
 # st.sidebar.markdown("1. Type your question in the text input.")
 # st.sidebar.markdown("2. Click the 'Send' button to get a response.")
 

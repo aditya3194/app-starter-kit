@@ -134,7 +134,7 @@ retriever_infos = [
 
 chain = MultiRetrievalQAChain.from_retrievers(ChatCohere(), retriever_infos, verbose=True,default_retriever=pdf_compression_retriever)
 
-print(chain.run("Who is the Chief Executive officer of STC in year 2022?"))
+st.write(chain.run("Who is the Chief Executive officer of STC in year 2022?"))
 
 
 

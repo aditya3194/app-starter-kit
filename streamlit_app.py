@@ -78,11 +78,11 @@ pdfItems = []
 #     pdfItems.extend(item)
 #     st.write(file)
 
-folder_path = pdf_path  # Replace with the path to your folder
-pdf_files = glob.glob(os.path.join(folder_path, '*.pdf'))
+# folder_path = pdf_path  # Replace with the path to your folder
+# pdf_files = glob.glob(os.path.join(folder_path, '*.pdf'))
 
-for pdf_file in pdf_files:
-    st.write(f"Processing: {pdf_file}")
+# for pdf_file in pdf_files:
+#     st.write(f"Processing: {pdf_file}")
 
 st.write(pdfItems)
 st.write(statementItems)

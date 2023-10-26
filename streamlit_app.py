@@ -124,6 +124,6 @@ if st.session_state.messages[-1]["role"] != "assistant":
 
 # Instructions for the user
 st.sidebar.header("STC")
-# st.sidebar.markdown("1. Type your question in the text input.")
-# st.sidebar.markdown("2. Click the 'Send' button to get a response.")
+st.sidebar.markdown("1. Type your question in the text input.")
+st.sidebar.markdown("2. Click the 'Send' button to get a response.")
 

@@ -5,4 +5,4 @@ IPython
 pandas
 unstructured
 cohere
-FAISS
+langchain.vectorstores

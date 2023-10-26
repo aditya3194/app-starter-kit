@@ -18,8 +18,8 @@ from langchain.chains.router import MultiRetrievalQAChain
 import cohere
 import os
 
-api_key = "c6pobgap7gKlXOuU29e97W3Q0A2mJhg01hfbWwlJ"
-co = cohere.Client(api_key) 
+cohere_api_key = "c6pobgap7gKlXOuU29e97W3Q0A2mJhg01hfbWwlJ"
+co = cohere.Client(cohere_api_key) 
 # Create a Streamlit app
 st.title("STC Chatbot")
 

@@ -24,73 +24,11 @@ co = cohere.Client(api_key)
 st.title("STC Chatbot")
 
 
-## Loading Text data from csv with pandas
-def extract_text_from_csv(csv_path):
-    df = pd.read_csv(csv_path)
-    docs = []
-    for row, item in df.iterrows():
-        content = str(item.to_dict())
-        metaDic = item.to_dict()
-        metaDic['row'] = row
-        metaDic['source'] = csv_path
-        doc = Document(page_content = content, metadata = metaDic)
-        docs.append(doc)
-    return docs
-
-#loading balancesheet only
-balancesheetFile =r"https://github.com/aditya3194/app-starter-kit/raw/f102b905a51df9824713f97588b32e9b5ef297ac/Files/table1_2019_balance_sheet.csv"
-balanceSheetItems = extract_text_from_csv(balancesheetFile)
-
-#loading income statement only
-statementFile =r"https://github.com/aditya3194/app-starter-kit/raw/f102b905a51df9824713f97588b32e9b5ef297ac/Files/table2_2019_income_statement.csv"
-statementItems = extract_text_from_csv(statementFile)
-
-## Loading Text data from PDF
-def extract_text_from_pdf(pdf_path):
-    raw_pdf_elements = partition_pdf(filename=pdf_path,
-                                 # Unstructured first finds embedded image blocks
-                                 extract_images_in_pdf=False,
-                                 # Use layout model (YOLOX) to get bounding boxes (for tables) and find titles
-                                 # Titles are any sub-section of the document 
-                                 infer_table_structure=False, 
-                                 # Post processing to aggregate text once we have the title 
-                                 chunking_strategy="by_title",
-                                 # Chunking params to aggregate text blocks
-                                 # Attempt to create a new chunk 800 chars
-                                 # Attempt to keep chunks > 500 chars 
-                                 max_characters=1000, 
-                                 new_after_n_chars=800, 
-                                 combine_text_under_n_chars=500)
-    docs = []
-    for element in raw_pdf_elements:
-        doc = Document(page_content = element.text, metadata = element.metadata.to_dict())
-        docs.append(doc)
-    
-    return docs
-
-
-
-pdf_path = r"master/Files/STC%20Bahrain%20FS%20-%20YE%202019%20-%20v5.pdf"
-pdfItems = []
-
-
-# for file in glob.glob(pdf_path):
-#     item = extract_text_from_pdf(file)
-#     pdfItems.extend(item)
-#     st.write("file")
-
-import glob
-
-for filename in glob.iglob('https://github.com/aditya3194/app-starter-kit/raw/816009312f61a5cfbe3505eace584efd5f198392/Files/*.pdf'):
-     st.write('/foobar/%s' % filename)
-
-# st.write(pdfItems)
-# st.write(balanceSheetItems)
-
-#databases
-balanceSheetDB = FAISS.from_documents(balanceSheetItems, CohereEmbeddings())
-finStatementDB = FAISS.from_documents(statementItems, CohereEmbeddings())
-pdfDB = FAISS.from_documents(pdfItems, CohereEmbeddings())
+# load databases locally
+db_location = "./db/"
+balanceSheetDB = FAISS.load_local(db_location+"balance_sheet_db", CohereEmbeddings())
+finStatementDB = FAISS.load_local(db_location+"fin_statement_db", CohereEmbeddings())
+pdfDB = FAISS.load_local(db_location+"pdf_db", CohereEmbeddings())
 
 #base retrieval
 balanceSheetRetriever = balanceSheetDB.as_retriever(

@@ -5,7 +5,7 @@ from langchain.document_loaders import CSVLoader, PyPDFLoader
 import glob
 import IPython
 import pandas as pd
-from langchain.vectorstores import FAISS
+from langchain.vectorstores import FAISS 
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.cohere import CohereEmbeddings

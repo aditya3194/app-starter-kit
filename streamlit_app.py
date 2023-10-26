@@ -74,12 +74,15 @@ pdf_path = r"master/Files/STC%20Bahrain%20FS%20-%20YE%202019%20-%20v5.pdf"
 pdfItems = []
 
 
-for file in glob.glob(pdf_path):
-    item = extract_text_from_pdf(file)
-    pdfItems.extend(item)
-    st.write("file")
+# for file in glob.glob(pdf_path):
+#     item = extract_text_from_pdf(file)
+#     pdfItems.extend(item)
+#     st.write("file")
 
+import glob
 
+for filename in glob.iglob('https://github.com/aditya3194/app-starter-kit/raw/816009312f61a5cfbe3505eace584efd5f198392/Files/*.pdf'):
+     st.write('/foobar/%s' % filename)
 st.write(pdfItems)
 # st.write(statementItems)
 

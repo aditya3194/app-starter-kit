@@ -16,6 +16,7 @@ from langchain.retrievers.document_compressors import CohereRerank
 from langchain.chains.router import MultiRetrievalQAChain
 
 import cohere
+import os
 
 api_key = "c6pobgap7gKlXOuU29e97W3Q0A2mJhg01hfbWwlJ"
 co = cohere.Client(api_key) 

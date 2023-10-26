@@ -1,3 +1,4 @@
+pip install faiss-cpu
 import streamlit as st
 import time
 import random

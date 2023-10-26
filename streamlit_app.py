@@ -85,7 +85,7 @@ for filename in glob.iglob('https://github.com/aditya3194/app-starter-kit/raw/81
      st.write('/foobar/%s' % filename)
 
 # st.write(pdfItems)
-st.write(balanceSheetItems)
+# st.write(balanceSheetItems)
 
 #databases
 balanceSheetDB = FAISS.from_documents(balanceSheetItems, CohereEmbeddings())

@@ -44,7 +44,7 @@ finStatementRetriever = finStatementDB.as_retriever(
 pdf_retriever = pdfDB.as_retriever(
    search_kwargs={"k": 50} # Change 50 docs
 )
-
+ 
 # adding reranker
 compressor = CohereRerank(top_n = 10)
 balance_sheet_compression_retriever = ContextualCompressionRetriever(

@@ -83,7 +83,7 @@ import glob
 
 for filename in glob.iglob('https://github.com/aditya3194/app-starter-kit/raw/816009312f61a5cfbe3505eace584efd5f198392/Files/*.pdf'):
      st.write('/foobar/%s' % filename)
-st.write(pdfItems)
+# st.write(pdfItems)
 # st.write(statementItems)
 
 # #databases

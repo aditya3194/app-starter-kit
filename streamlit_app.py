@@ -24,7 +24,7 @@ sys.path.append('../..')
 api_key = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
 os.environ['COHERE_API_KEY'] = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
 co = cohere.Client(api_key) 
- 
+  
 st.title("STC Chatbot")
 
 

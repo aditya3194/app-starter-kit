@@ -25,7 +25,7 @@ _ = load_dotenv(find_dotenv()) # read local .env file
 
 api_key = os.environ['COHERE_API_KEY']
 co = cohere.Client(api_key) 
-
+ 
 st.title("STC Chatbot")
 
 

@@ -15,12 +15,17 @@ from langchain.retrievers import ContextualCompressionRetriever
 from langchain.retrievers.document_compressors import CohereRerank
 from langchain.chains.router import MultiRetrievalQAChain
 
-import cohere
 import os
+import cohere
+import sys
+sys.path.append('../..')
 
-cohere_api_key = "c6pobgap7gKlXOuU29e97W3Q0A2mJhg01hfbWwlJ"
-co = cohere.Client(cohere_api_key) 
-# Create a Streamlit app
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv()) # read local .env file
+
+api_key = os.environ['COHERE_API_KEY']
+co = cohere.Client(api_key) 
+
 st.title("STC Chatbot")
 
 

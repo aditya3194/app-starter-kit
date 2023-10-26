@@ -3,7 +3,7 @@ import time
 import random
 
 # Create a Streamlit app
-st.title("Banking Chatbot")
+st.title("STC Chatbot")
 
 # Define a text input for user messages
 # user_input = st.text_input("")

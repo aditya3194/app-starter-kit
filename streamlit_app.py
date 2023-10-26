@@ -20,10 +20,9 @@ import cohere
 import sys
 sys.path.append('../..')
 
-from dotenv import load_dotenv, find_dotenv
-_ = load_dotenv(find_dotenv()) # read local .env file
 
-api_key = os.environ['COHERE_API_KEY']
+api_key = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
+os.environ['COHERE_API_KEY'] = "qULTg702krwwoZyfvyKHkwPQkVpBAl2v2liNhlCh"
 co = cohere.Client(api_key) 
  
 st.title("STC Chatbot")

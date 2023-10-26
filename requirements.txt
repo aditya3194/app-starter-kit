@@ -4,3 +4,4 @@ glob2
 IPython
 pandas
 unstructured
+cohere

@@ -3,7 +3,7 @@ import time
 import random
 from langchain.document_loaders import CSVLoader, PyPDFLoader
 import glob 
-import IPython
+import IPython 
 import pandas as pd
 from langchain.vectorstores import FAISS 
 from langchain.schema import Document

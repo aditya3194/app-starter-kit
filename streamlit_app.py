@@ -67,13 +67,22 @@ def extract_text_from_pdf(pdf_path):
     
     return docs
 
+
+
 pdf_path = r"https://github.com/aditya3194/app-starter-kit/raw/f102b905a51df9824713f97588b32e9b5ef297ac/Files/"
 pdfItems = []
+
 
 for file in glob.glob(pdf_path):
     item = extract_text_from_pdf(file)
     pdfItems.extend(item)
     st.write(file)
+
+folder_path = pdf_path  # Replace with the path to your folder
+pdf_files = glob.glob(os.path.join(folder_path, '*.pdf'))
+
+for pdf_file in pdf_files:
+    st.write(f"Processing: {pdf_file}")
 
 st.write(pdfItems)
 st.write(statementItems)

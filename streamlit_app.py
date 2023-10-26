@@ -70,7 +70,7 @@ def extract_text_from_pdf(pdf_path):
 
 
 
-pdf_path = r"https://github.com/aditya3194/app-starter-kit/raw/816009312f61a5cfbe3505eace584efd5f198392/Files/STC%20Bahrain%20FS%20-%20YE%202019%20-%20v5.pdf"
+pdf_path = r"master/Files/STC%20Bahrain%20FS%20-%20YE%202019%20-%20v5.pdf"
 pdfItems = []
 
 

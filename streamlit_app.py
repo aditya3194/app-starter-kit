@@ -83,57 +83,58 @@ import glob
 
 for filename in glob.iglob('https://github.com/aditya3194/app-starter-kit/raw/816009312f61a5cfbe3505eace584efd5f198392/Files/*.pdf'):
      st.write('/foobar/%s' % filename)
+
 # st.write(pdfItems)
 # st.write(statementItems)
 
-# #databases
-# balanceSheetDB = FAISS.from_documents(balanceSheetItems, CohereEmbeddings())
-# finStatementDB = FAISS.from_documents(statementItems, CohereEmbeddings())
-# pdfDB = FAISS.from_documents(pdfItems, CohereEmbeddings())
+#databases
+balanceSheetDB = FAISS.from_documents(balanceSheetItems, CohereEmbeddings())
+finStatementDB = FAISS.from_documents(statementItems, CohereEmbeddings())
+pdfDB = FAISS.from_documents(pdfItems, CohereEmbeddings())
 
-# #base retrieval
-# balanceSheetRetriever = balanceSheetDB.as_retriever(
-#    search_kwargs={"k": 50} # Change 50 docs
-# )
-# finStatementRetriever = finStatementDB.as_retriever(
-#    search_kwargs={"k": 50} # Change 50 docs
-# )
-# pdf_retriever = pdfDB.as_retriever(
-#    search_kwargs={"k": 50} # Change 50 docs
-# )
+#base retrieval
+balanceSheetRetriever = balanceSheetDB.as_retriever(
+   search_kwargs={"k": 50} # Change 50 docs
+)
+finStatementRetriever = finStatementDB.as_retriever(
+   search_kwargs={"k": 50} # Change 50 docs
+)
+pdf_retriever = pdfDB.as_retriever(
+   search_kwargs={"k": 50} # Change 50 docs
+)
 
-# # adding reranker
-# compressor = CohereRerank(top_n = 10)
-# balance_sheet_compression_retriever = ContextualCompressionRetriever(
-#     base_compressor=compressor, base_retriever=balanceSheetRetriever
-# )
-# fin_statement_compression_retriever = ContextualCompressionRetriever(
-#     base_compressor=compressor, base_retriever=finStatementRetriever
-# )
-# pdf_compression_retriever = ContextualCompressionRetriever(
-#     base_compressor=compressor, base_retriever=pdf_retriever
-# )
-# retriever_infos = [
-#     {
-#         "name": "Balance Sheet",
-#         "description": "Good for answering questions about Assets, Liabilities, Equity and other similar items which STC has on balance sheet for years 2018 and 2019",
-#         "retriever": balance_sheet_compression_retriever
-#     },
-#     {
-#         "name": "Financial Statement",
-#         "description": "Good for answering questions about financial performance of STC for years 2018 and 2019, such as Revenues, Profits, Costs of sales, amortizations etc",
-#         "retriever": fin_statement_compression_retriever
-#     },
-#     {
-#         "name": "PDF Files",
-#         "description": "Good for answering questions about STC strategy, its chairman and key activities, as well as other non-finance related questions for STC",
-#         "retriever": pdf_compression_retriever
-#     }
-# ]
+# adding reranker
+compressor = CohereRerank(top_n = 10)
+balance_sheet_compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor, base_retriever=balanceSheetRetriever
+)
+fin_statement_compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor, base_retriever=finStatementRetriever
+)
+pdf_compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor, base_retriever=pdf_retriever
+)
+retriever_infos = [
+    {
+        "name": "Balance Sheet",
+        "description": "Good for answering questions about Assets, Liabilities, Equity and other similar items which STC has on balance sheet for years 2018 and 2019",
+        "retriever": balance_sheet_compression_retriever
+    },
+    {
+        "name": "Financial Statement",
+        "description": "Good for answering questions about financial performance of STC for years 2018 and 2019, such as Revenues, Profits, Costs of sales, amortizations etc",
+        "retriever": fin_statement_compression_retriever
+    },
+    {
+        "name": "PDF Files",
+        "description": "Good for answering questions about STC strategy, its chairman and key activities, as well as other non-finance related questions for STC",
+        "retriever": pdf_compression_retriever
+    }
+]
 
-# chain = MultiRetrievalQAChain.from_retrievers(ChatCohere(), retriever_infos, verbose=True,default_retriever=pdf_compression_retriever)
+chain = MultiRetrievalQAChain.from_retrievers(ChatCohere(), retriever_infos, verbose=True,default_retriever=pdf_compression_retriever)
 
-# print(chain.run("Who is the Chief Executive officer of STC in year 2022?"))
+print(chain.run("Who is the Chief Executive officer of STC in year 2022?"))
 
 
 

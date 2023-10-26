@@ -1,1 +1,6 @@
 streamlit>=1.26.0
+langchain
+glob2
+IPython
+pandas
+unstructured

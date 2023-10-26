@@ -74,7 +74,7 @@ for file in glob.glob(pdf_path):
     item = extract_text_from_pdf(file)
     pdfItems.extend(item)
 
-st.text("This is some text.")
+st.text(pdfItems)
 
 # #databases
 # balanceSheetDB = FAISS.from_documents(balanceSheetItems, CohereEmbeddings())

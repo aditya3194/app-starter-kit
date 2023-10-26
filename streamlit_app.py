@@ -73,6 +73,7 @@ pdfItems = []
 for file in glob.glob(pdf_path):
     item = extract_text_from_pdf(file)
     pdfItems.extend(item)
+    st.write(file)
 
 st.write(pdfItems)
 st.write(statementItems)
